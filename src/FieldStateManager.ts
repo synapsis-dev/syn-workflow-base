@@ -68,6 +68,32 @@ export class FieldStateManager<TFields extends string> {
     }
 
     /**
+     * Unset all required fields temporary. With ResetRequiredFields they will be reseted.
+     *
+     * @memberof FieldStateManager
+     */
+    public UnsetRequiredFieldsTemporary(): void {
+        this.requiredFields.forEach((field) => {
+            if (document.getElementById(field)) {
+                jr_set_required(field, false);
+            }
+        });
+    }
+
+    /**
+     * Resets the temporary unset required fields.
+     *
+     * @memberof FieldStateManager
+     */
+    public ResetRequiredFields(): void {
+        this.requiredFields.forEach((field) => {
+            if (document.getElementById(field)) {
+                jr_set_required(field, true);
+            }
+        });
+    }
+
+    /**
      * Unset the given fields as disabled.
      *
      * @param {...TFields[]} fields The fields which will be unset as disabled.
