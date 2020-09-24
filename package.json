@@ -1,0 +1,61 @@
+{
+  "name": "workflow-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "lint": "eslint ./src/**/*.{js,ts,tsx}",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
+    "test:prod": "npm run lint && npm run test -- --no-cache",
+    "docs": "typedoc --out docs --target es6 --theme minimal --mode file src"
+  },
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverageFrom": [
+      "src/*.{js,ts}"
+    ]
+  },
+  "devDependencies": {
+    "@jobrouter/api": "^5.1.0-alpha.1",
+    "@types/jquery": "^3.3.31",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "eslint": "^7.9.0",
+    "eslint-plugin-jsdoc": "^30.5.1",
+    "eslint-plugin-prefer-arrow": "^1.2.1",
+    "jest": "^26.4.2",
+    "jest-config": "^26.4.2",
+    "rimraf": "^3.0.2",
+    "typedoc": "^0.16.11",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {}
+}
