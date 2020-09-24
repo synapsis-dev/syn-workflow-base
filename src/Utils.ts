@@ -66,81 +66,6 @@ export function GetSubtableFieldId<TSubtable extends string, TSFields>(subtable:
 }
 
 /**
- * Shows subtable columns.
- *
- * @export
- * @param {string} subtable Name of subtable
- * @param {...string[]} columns Array of column names
- * @memberof CheckDialog
- */
-export function ShowSubtableColumn(subtable: string, ...columns: string[]): void {
-    columns?.forEach(column => {
-        jr_show_subtable_column(subtable, column);
-    });
-}
-
-/**
- * Hides subtable clumns.
- *
- * @export
- * @param {string} subtable Name of subtable
- * @param {...string[]} columns Array of column names
- */
-export function HideSubtableColumn(subtable: string, ...columns: string[]): void {
-    columns?.forEach(column => {
-        jr_hide_subtable_column(subtable, column);
-    });
-}
-
-/**
- * Sets or unsets subtable columns to readonly.
- *
- * @export
- * @param {TSubtable} subtable Name of subtable
- * @param {string[]} columns Array of column names
- * @param {boolean} [readonly=true]
- */
-export function SetSubtableColumnReadonly<TSubtable extends string>(subtable: TSubtable, columns: string[], readonly = true): void {
-    jr_loop_table(subtable, (s, rowId: number) => {
-        columns?.forEach((column) => {
-            jr_set_readonly(GetSubtableFieldId(subtable, rowId, column), readonly);
-        });
-    });
-}
-
-/**
- * Sets or unsets subtable columns to required.
- *
- * @export
- * @param {TSubtable} subtable Name of subtable
- * @param {string[]} columns Columns Array of column names
- * @param {boolean} [required=true]
- */
-export function SetSubtableColumnRequired<TSubtable extends string>(subtable: TSubtable, columns: string[], required = true): void {
-    jr_loop_table(subtable, (s, rowid: number) => {
-        columns?.forEach(column => {
-            jr_set_required(GetSubtableFieldId(subtable, rowid, column), required);
-        });
-    });
-}
-
-/**
- * Sets or unsets subtable columns to disabled.
- *
- * @export
- * @param {TSubtable} subtable Name of subtable
- * @param {string[]} columns Columns Array of column names
- * @param {boolean} [disabled=true]
- */
-export function SetSubtableColumnDisabled<TSubtable extends string>(subtable: TSubtable, columns: string[], disabled = true): void {
-    jr_loop_table(subtable, (s, rowid: number) => {
-        columns?.forEach(column => {
-            jr_set_disabled(GetSubtableFieldId(subtable, rowid, column), disabled);
-        });
-    });
-}
-
-/**
  * Set header color for subtables with given ids.
  *
  * @export
@@ -168,21 +93,6 @@ export function SetSubtableFieldColor<TSubtable extends string>(subtable: TSubta
     const element = document.getElementById(GetSubtableFieldId(subtable, rowId, column));
     element.style.backgroundColor = backgroundColor;
     element.style.color = forgroundColor;
-}
-
-/**
- * Check if input is a Date object.
- *
- * @export
- * @param {unknown} input The input value checked.
- * @returns {boolean} Returns true when input is a Date.
- */
-export function IsDate(input: unknown): boolean {
-    if (Object.prototype.toString.call(input) === "[object Date]") {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 /**
@@ -334,7 +244,7 @@ export function HideSubtableActions<TSubtable extends string>(subtable: TSubtabl
  *
  * @export
  * @param {TSubtable} subtable The subtable.
- * @param {SubtableActions[]} actions Actions to hide.
+ * @param {SubtableActions[]} actions Actions to show.
  */
 export function ShowSubtableActions<TSubtable extends string>(subtable: TSubtable, actions: SubtableActions[]): void {
     ShowOrHideSubtableActions(subtable, actions, true);
@@ -377,14 +287,15 @@ export function DisableSectionCollapse(): void {
  */
 export function SetDefaultStyle(accent = "#f07724", background = "#fff", text = "#fff", label = "#778899"): void {
     document.querySelectorAll<HTMLLegendElement>(".jr-section-title").forEach((element) => {
-        element.parentElement.style.borderRadius = "0px";
+        element.style.border = "0px";
         element.style.borderRadius = "0px";
         element.style.backgroundColor = accent;
         element.style.color = text;
     });
 
-    document.querySelectorAll<HTMLElement>(".jr-section-content").forEach((element) => {
-        element.style.backgroundColor = background;
+    document.querySelectorAll<HTMLElement>(".jr-section").forEach((element) => {
+        element.style.borderRadius = "0px";
+        element.style.border = `1px solid ${accent}`;
     });
 
     document.querySelectorAll<HTMLElement>(".jr-section-content").forEach((element) => {
@@ -395,4 +306,30 @@ export function SetDefaultStyle(accent = "#f07724", background = "#fff", text = 
         element.style.backgroundColor = label;
         element.style.color = text;
     });
+}
+
+/**
+ * Loads an SQL element from a load only on request section an insert it before a dummy element.
+ *
+ * @export
+ * @param {string} section The load only on request section which will be loaded.
+ * @param {string} sqlElement The sql element.
+ * @param {string?} dummyElement The dummy element.
+ */
+export function LoadSQLElement(section: string, sqlElement: string, dummyElement?: string): void {
+    jr_show(section);
+
+    if (dummyElement) {
+        const dummy = document.getElementById(`div_${dummyElement}`);
+        const sql = document.getElementById(`div_${sqlElement}`);
+
+        if (dummy && sql) {
+            dummy.parentElement.insertBefore(sql, dummy);
+
+            jr_hide(section);
+            jr_hide(dummyElement);
+        } else {
+            console.warn(`Dummy Element or SQL Element not found! | DUMMY: ${dummy} | SQL: ${sql}`);
+        }
+    }
 }
