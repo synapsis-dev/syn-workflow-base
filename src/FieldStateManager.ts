@@ -23,6 +23,51 @@ export class FieldStateManager<TFields extends string> {
     }
 
     /**
+     * A list of disabled fields.
+     *
+     * @readonly
+     * @type {ReadonlyArray<TFields>}
+     * @memberof FieldStateManager
+     */
+    public get DisabledFields(): ReadonlyArray<TFields> {
+        jr_show(Array.from(this.readonlyFields));
+        return Array.from(this.disabledFields);
+    }
+
+    /**
+     * A list of readonly fields.
+     *
+     * @readonly
+     * @type {ReadonlyArray<TFields>}
+     * @memberof FieldStateManager
+     */
+    public get ReadonlyFields(): ReadonlyArray<TFields> {
+        return Array.from(this.readonlyFields);
+    }
+
+    /**
+     * A list of required fields.
+     *
+     * @readonly
+     * @type {ReadonlyArray<TFields>}
+     * @memberof FieldStateManager
+     */
+    public get RequiredFields(): ReadonlyArray<TFields> {
+        return Array.from(this.requiredFields);
+    }
+
+    /**
+     * A list of visible fields.
+     *
+     * @readonly
+     * @type {ReadonlyArray<TFields>}
+     * @memberof FieldStateManager
+     */
+    public get VisibleFields(): ReadonlyArray<TFields> {
+        return Array.from(this.visibleFields);
+    }
+
+    /**
      * Unset the given fields as disabled.
      *
      * @param {...TFields[]} fields The fields which will be unset as disabled.
