@@ -1,3 +1,4 @@
+import { ColumnStateManager } from "./ColumnStateManager";
 import * as Utils from "./Utils";
 
 /**
@@ -8,20 +9,23 @@ import * as Utils from "./Utils";
  * @class SubtableLogicBase
  * @template TSteps The string enum of steps.
  * @template TSubtable The id of subtable.
- * @template TFields The string enum of subtable fields.
+ * @template TColumnType The type of columns enum.
+ * @template TColumns The string enum of subtable columns.
  */
-export abstract class SubtableLogicBase<TSteps, TSubtable extends string, TFields> {
-    private readonly columns: TFields;
+export abstract class SubtableLogicBase<TSteps, TSubtable extends string, TColumnType, TColumns extends string> {
+    private readonly columns: TColumnType;
     private readonly name: TSubtable;
     private readonly steps: TSteps;
+    private readonly columnStateManager: ColumnStateManager<TColumns>;
 
     /**
      * Creates a new instance of this type.
      */
-    constructor(steps: TSteps, name: TSubtable, fields: TFields) {
+    constructor(steps: TSteps, name: TSubtable, fields: TColumnType) {
         this.steps = steps;
         this.name = name;
         this.columns = fields;
+        this.columnStateManager = new ColumnStateManager<TColumns>(this.name);
     }
 
     /**
@@ -35,14 +39,18 @@ export abstract class SubtableLogicBase<TSteps, TSubtable extends string, TField
         return this.name;
     }
 
+    protected get CSN(): ColumnStateManager<TColumns> {
+        return this.columnStateManager;
+    }
+
     /**
      * Available field in subtable.
      *
      * @readonly
-     * @type {TFields}
+     * @type {TColumnType}
      * @memberof SubtableLogicBase
      */
-    protected get Column(): TFields {
+    protected get Column(): TColumnType {
         return this.columns;
     }
 
@@ -120,7 +128,7 @@ export abstract class SubtableLogicBase<TSteps, TSubtable extends string, TField
      * @param {boolean} [required=true] True set the given columns to required, false to not required.
      * @memberof SubtableLogicBase
      */
-    protected SetRequiredColumns(columns: string[], required = true): void{
+    protected SetRequiredColumns(columns: string[], required = true): void {
         jr_loop_table(this.Name, (subtable, rowid: number) => {
             columns?.forEach(column => {
                 jr_set_required(Utils.GetSubtableFieldId(subtable, rowid, column), required);
