@@ -8,7 +8,8 @@ import { FieldStateManager } from './FieldStateManager';
  * @abstract
  * @class DialogLogicBase
  * @template TSteps The string enum of steps.
- * @template TFieldsType The string enum of fields.
+ * @template TFieldsType The type of fields enum.
+ * @template TFields The string enum of fields 
  */
 export abstract class DialogLogicBase<TSteps, TFieldsType, TFields extends string> {
     private readonly fields: TFieldsType;
