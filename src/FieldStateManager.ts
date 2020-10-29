@@ -30,7 +30,6 @@ export class FieldStateManager<TFields extends string> {
      * @memberof FieldStateManager
      */
     public get DisabledFields(): ReadonlyArray<TFields> {
-        jr_show(Array.from(this.readonlyFields));
         return Array.from(this.disabledFields);
     }
 
@@ -251,11 +250,11 @@ export class FieldStateManager<TFields extends string> {
             if (document.getElementById(field)) {
                 if (disabled) {
                     this.disabledFields.add(field);
-                    jr_set_disabled(field, true);
                 } else {
                     this.disabledFields.delete(field);
-                    jr_set_disabled(field, false);
                 }
+
+                jr_set_disabled(field, disabled);
             }
         });
     }
