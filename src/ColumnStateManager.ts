@@ -252,7 +252,7 @@ export class ColumnStateManager<TColumns extends string> {
      */
     private SetColumnsDisabled(columns: TColumns[], disabled: boolean): void {
         columns.forEach((column) => {
-            if (document.getElementById(column)) {
+            if (document.getElementById(this.GetColumnHeaderId(column))) {
                 if (disabled) {
                     this.disabledColumns.add(column);
                 } else {
@@ -276,7 +276,7 @@ export class ColumnStateManager<TColumns extends string> {
      */
     private SetColumnsReadonly(columns: TColumns[], readonly: boolean): void {
         columns?.forEach((column) => {
-            if (document.getElementById(column)) {
+            if (document.getElementById(this.GetColumnHeaderId(column))) {
                 if (readonly) {
                     this.readonlyColumns.add(column);
                 } else {
@@ -300,7 +300,7 @@ export class ColumnStateManager<TColumns extends string> {
      */
     private SetColumnsRequired(columns: TColumns[], required: boolean): void {
         columns?.forEach((column) => {
-            if (document.getElementById(column)) {
+            if (document.getElementById(this.GetColumnHeaderId(column))) {
                 if (required) {
                     this.requiredColumns.add(column);
                 } else {
@@ -324,7 +324,7 @@ export class ColumnStateManager<TColumns extends string> {
      */
     private SetColumnsVisibilty(columns: TColumns[], visible: boolean): void {
         columns.forEach((column) => {
-            if (document.getElementById(column)) {
+            if (document.getElementById(this.GetColumnHeaderId(column))) {
                 if (visible) {
                     this.visibleColumns.add(column);
                     jr_show_subtable_column(this.subtable, column);
@@ -334,5 +334,17 @@ export class ColumnStateManager<TColumns extends string> {
                 }
             }
         });
+    }
+
+    /**
+     * Get the header id of of given column
+     *
+     * @private
+     * @param {string} column The column
+     * @returns {string}
+     * @memberof ColumnStateManager
+     */
+    private GetColumnHeaderId(column: string): string {
+        return `div_${this.subtable}_${column}_header`;
     }
 }
