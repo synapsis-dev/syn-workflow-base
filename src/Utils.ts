@@ -305,6 +305,10 @@ export function SetDefaultStyle(accent = "#f07724", background = "#fff", text = 
     document.querySelectorAll<HTMLElement>("tr[id$='label']").forEach((element) => {
         element.style.backgroundColor = label;
         element.style.color = text;
+
+        const child = element.querySelector("div");
+        child.style.paddingLeft = '10px';
+        child.style.paddingRight = '10px';
     });
 }
 
