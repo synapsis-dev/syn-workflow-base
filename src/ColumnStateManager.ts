@@ -9,6 +9,7 @@ import * as Utils from "./Utils";
  */
 export class ColumnStateManager<TColumns extends string> {
     private subtable: string;
+    private columns: Set<TColumns>;
     private disabledColumns: Set<TColumns>;
     private readonlyColumns: Set<TColumns>;
     private requiredColumns: Set<TColumns>;
@@ -18,8 +19,9 @@ export class ColumnStateManager<TColumns extends string> {
      * Creates an instance of ColumnStateManager.
      * @memberof ColumnStateManager
      */
-    constructor(subtable: string) {
+    constructor(subtable: string, columns: Iterable<TColumns>) {
         this.subtable = subtable;
+        this.columns = new Set<TColumns>(columns);
         this.disabledColumns = new Set<TColumns>();
         this.readonlyColumns = new Set<TColumns>();
         this.requiredColumns = new Set<TColumns>();
@@ -84,16 +86,36 @@ export class ColumnStateManager<TColumns extends string> {
     }
 
     /**
-     * Resets the temporary unset required columns.
+     * Resets visibility for all columns.
+     *
+     * @memberof ColumnStateManager
+     */
+    public ResetVisibilty(): void {
+        this.columns.forEach((column) => {
+            if (document.getElementById(column)) {
+                if (this.requiredColumns.has(column)) {
+                    jr_show_subtable_column(this.subtable, column);
+                } else {
+                    jr_hide_subtable_column(this.subtable, column);
+                }
+            }
+        });
+    }
+
+    /**
+     * Resets required state for all columns.
      *
      * @memberof ColumnStateManager
      */
     public ResetRequiredcolumns(): void {
-        this.requiredColumns.forEach((field) => {
-            if (document.getElementById(field)) {
-                jr_set_required(field, true);
+        this.columns.forEach((column) => {
+            if (document.getElementById(column)) {
+                if (this.requiredColumns.has(column)) {
+                    jr_set_required(column, true);
+                } else {
+                    jr_set_required(column, false);
+                }
             }
-
         });
     }
 
