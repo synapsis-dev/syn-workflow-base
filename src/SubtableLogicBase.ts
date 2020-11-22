@@ -21,11 +21,11 @@ export abstract class SubtableLogicBase<TSteps, TSubtable extends string, TColum
     /**
      * Creates a new instance of this type.
      */
-    constructor(steps: TSteps, name: TSubtable, fields: TColumnType) {
+    constructor(steps: TSteps, name: TSubtable, columns: TColumnType) {
         this.steps = steps;
         this.name = name;
-        this.columns = fields;
-        this.columnStateManager = new ColumnStateManager<TColumns>(this.name);
+        this.columns = columns;
+        this.columnStateManager = new ColumnStateManager<TColumns>(this.name, Object.values(columns));
     }
 
     /**
