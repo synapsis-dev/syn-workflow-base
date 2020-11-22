@@ -93,7 +93,7 @@ export class ColumnStateManager<TColumns extends string> {
     public ResetVisibilty(): void {
         this.columns.forEach((column) => {
             if (document.getElementById(column)) {
-                if (this.requiredColumns.has(column)) {
+                if (this.visibleColumns.has(column)) {
                     jr_show_subtable_column(this.subtable, column);
                 } else {
                     jr_hide_subtable_column(this.subtable, column);
