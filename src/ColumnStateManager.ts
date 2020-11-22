@@ -92,12 +92,10 @@ export class ColumnStateManager<TColumns extends string> {
      */
     public ResetVisibilty(): void {
         this.columns.forEach((column) => {
-            if (document.getElementById(column)) {
-                if (this.visibleColumns.has(column)) {
-                    jr_show_subtable_column(this.subtable, column);
-                } else {
-                    jr_hide_subtable_column(this.subtable, column);
-                }
+            if (this.visibleColumns.has(column)) {
+                jr_show_subtable_column(this.subtable, column);
+            } else {
+                jr_hide_subtable_column(this.subtable, column);
             }
         });
     }
@@ -109,13 +107,10 @@ export class ColumnStateManager<TColumns extends string> {
      */
     public ResetRequiredcolumns(): void {
         this.columns.forEach((column) => {
-            if (document.getElementById(column)) {
-                if (this.requiredColumns.has(column)) {
-                    jr_set_required(column, true);
-                } else {
-                    jr_set_required(column, false);
-                }
-            }
+            const required = this.requiredColumns.has(column);
+            jr_loop_table(this.subtable, (subtable, rowId) => {
+                jr_set_required(Utils.GetSubtableFieldId(subtable, rowId, column), required);
+            });
         });
     }
 
