@@ -30,7 +30,7 @@ declare interface IJRRegistry {
 }
 
 declare interface IJRRegistryComponent {
-    _dataTables: {
+    _dataTablesConfig: {
         aaData: string[][];
     }
 }
