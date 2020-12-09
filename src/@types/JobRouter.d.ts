@@ -21,6 +21,20 @@ declare const $JR: {
     widget: {};
 };
 
+declare const $JRApp: {
+    registry: IJRRegistry;
+};
+
+declare interface IJRRegistry {
+    getComponent(id: string): IJRRegistryComponent;
+}
+
+declare interface IJRRegistryComponent {
+    _dataTables: {
+        aaData: string[][];
+    }
+}
+
 declare const $JRSTEP: {
     debugSubmit: boolean;
     stepData: {
