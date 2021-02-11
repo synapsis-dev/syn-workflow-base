@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/dkanehl/syn-workflow-base/compare/v1.1.6...v1.2.0) (2021-02-11)
+
+### Features
+
+* add ability to set a default or custom style to some default elements ([6d376e4](https://github.com/dkanehl/syn-workflow-base/commit/6d376e4eac90e10bedd7d85076ed7b9ea3af4ca0))
+
+
+### BREAKING CHANGES
+
+* The previous usage of `SetDefaultStyle` function will break do to parameter changes.
+
+
+
 # [1.1.1](https://github.com/dkanehl/syn-workflow-base/compare/v1.1.0...v1.1.1) (2020-10-30)
 
 

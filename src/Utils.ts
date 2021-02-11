@@ -277,39 +277,88 @@ export function DisableSectionCollapse(): void {
 }
 
 /**
- * Set default dialog style.
+ * Set default dialog style or custom Style.
  *
  * @export
- * @param {string} [accent="#f07724"]
- * @param {string} [background="#fff"]
- * @param {string} [text="#fff"]
- * @param {string} [label="#778899"]
+ * @param {CSSStyleDeclaration} [section] Section style.
+ * @param {CSSStyleDeclaration} [sectionTitle] Section title style.
+ * @param {CSSStyleDeclaration} [sectionContent] Section constent style.
+ * @param {CSSStyleDeclaration} [label] Label style.
+ * @param {CSSStyleDeclaration} [labelDescription] Label description style.
  */
-export function SetDefaultStyle(accent = "#f07724", background = "#fff", text = "#fff", label = "#778899"): void {
-    document.querySelectorAll<HTMLLegendElement>(".jr-section-title").forEach((element) => {
-        element.style.border = "0px";
-        element.style.borderRadius = "0px";
-        element.style.backgroundColor = accent;
-        element.style.color = text;
-    });
+export function SetDefaultStyle(section?: CSSStyleDeclaration, sectionTitle?: CSSStyleDeclaration, sectionContent?: CSSStyleDeclaration, label?: CSSStyleDeclaration, labelDescription?: CSSStyleDeclaration): void {
+    const accent = "#3b3e4d";
+
+    if (!section) {
+        section = {
+            borderRadius: "0px",
+            border: `1px solid ${accent}`,
+        } as CSSStyleDeclaration;
+    }
+
+    if (!sectionTitle) {
+        sectionTitle = {
+            border: "0px",
+            borderRadius: "0px",
+            backgroundColor: accent,
+            color: "#fff",
+        } as CSSStyleDeclaration;
+    }
+
+    if (!sectionContent) {
+        sectionContent = {
+            backgroundColor: "#F5F5F5",
+        } as CSSStyleDeclaration;
+    }
+
+    if (!label) {
+        label = {
+            backgroundColor: "#ffffff",
+            color: "#222",
+            border: `1px solid ${accent} `,
+        } as CSSStyleDeclaration;
+    }
+
+    if (!labelDescription) {
+        labelDescription = {
+            paddingLeft: "10px",
+            paddingRight: "10px",
+        } as CSSStyleDeclaration;
+    }
 
     document.querySelectorAll<HTMLElement>(".jr-section").forEach((element) => {
-        element.style.borderRadius = "0px";
-        element.style.border = `1px solid ${accent}`;
+        SetElementStyle(element, section);
+    });
+
+    document.querySelectorAll<HTMLLegendElement>(".jr-section-title").forEach((element) => {
+        SetElementStyle(element, sectionTitle);
     });
 
     document.querySelectorAll<HTMLElement>(".jr-section-content").forEach((element) => {
-        element.style.backgroundColor = background;
+        SetElementStyle(element, sectionContent);
     });
 
     document.querySelectorAll<HTMLElement>("tr[id$='label']").forEach((element) => {
-        element.style.backgroundColor = label;
-        element.style.color = text;
-
         const child = element.querySelector("div");
-        child.style.paddingLeft = '10px';
-        child.style.paddingRight = '10px';
+
+        SetElementStyle(element, label);       
+        SetElementStyle(child, labelDescription);
     });
+}
+
+/**
+ * Set the given style to given element.
+ *
+ * @param {HTMLElement} element The HTML element whichs style will be set.
+ * @param {CSSStyleDeclaration} style The style that will be set to the element.
+ */
+function SetElementStyle(element: HTMLElement, style: CSSStyleDeclaration): void {
+    for (const key in style) {
+        if (Object.prototype.hasOwnProperty.call(style, key)) {
+            const declaration = style[key];
+            element.style[key] = declaration;
+        }
+    }
 }
 
 /**
