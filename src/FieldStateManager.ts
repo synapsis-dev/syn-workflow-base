@@ -5,31 +5,31 @@
  * @class FieldStateManager
  * @template TFields
  */
-export class FieldStateManager<TFields extends string> {
-    private disabledFields: Set<TFields>;
-    private readonlyFields: Set<TFields>;
-    private requiredFields: Set<TFields>;
-    private visibleFields: Set<TFields>;
+export class FieldStateManager {
+    private disabledFields: Set<string>;
+    private readonlyFields: Set<string>;
+    private requiredFields: Set<string>;
+    private visibleFields: Set<string>;
 
     /**
      * Creates an instance of FieldStateManager.
      * @memberof FieldStateManager
      */
     constructor() {
-        this.disabledFields = new Set<TFields>();
-        this.readonlyFields = new Set<TFields>();
-        this.requiredFields = new Set<TFields>();
-        this.visibleFields = new Set<TFields>();
+        this.disabledFields = new Set<string>();
+        this.readonlyFields = new Set<string>();
+        this.requiredFields = new Set<string>();
+        this.visibleFields = new Set<string>();
     }
 
     /**
      * A list of disabled fields.
      *
      * @readonly
-     * @type {ReadonlyArray<TFields>}
+     * @type {ReadonlyArray<string>}
      * @memberof FieldStateManager
      */
-    public get DisabledFields(): ReadonlyArray<TFields> {
+    public get DisabledFields(): ReadonlyArray<string> {
         return Array.from(this.disabledFields);
     }
 
@@ -37,10 +37,10 @@ export class FieldStateManager<TFields extends string> {
      * A list of readonly fields.
      *
      * @readonly
-     * @type {ReadonlyArray<TFields>}
+     * @type {ReadonlyArray<string>}
      * @memberof FieldStateManager
      */
-    public get ReadonlyFields(): ReadonlyArray<TFields> {
+    public get ReadonlyFields(): ReadonlyArray<string> {
         return Array.from(this.readonlyFields);
     }
 
@@ -48,10 +48,10 @@ export class FieldStateManager<TFields extends string> {
      * A list of required fields.
      *
      * @readonly
-     * @type {ReadonlyArray<TFields>}
+     * @type {ReadonlyArray<string>}
      * @memberof FieldStateManager
      */
-    public get RequiredFields(): ReadonlyArray<TFields> {
+    public get RequiredFields(): ReadonlyArray<string> {
         return Array.from(this.requiredFields);
     }
 
@@ -59,10 +59,10 @@ export class FieldStateManager<TFields extends string> {
      * A list of visible fields.
      *
      * @readonly
-     * @type {ReadonlyArray<TFields>}
+     * @type {ReadonlyArray<string>}
      * @memberof FieldStateManager
      */
-    public get VisibleFields(): ReadonlyArray<TFields> {
+    public get VisibleFields(): ReadonlyArray<string> {
         return Array.from(this.visibleFields);
     }
 
@@ -95,10 +95,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Unset the given fields as disabled.
      *
-     * @param {...TFields[]} fields The fields which will be unset as disabled.
+     * @param {...string[]} fields The fields which will be unset as disabled.
      * @memberof FieldStateManager
      */
-    public UnsetDisabled(...fields: TFields[]): void {
+    public UnsetDisabled(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -113,10 +113,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Unset the given fields as readonly.
      *
-     * @param {...TFields[]} fields The fields which will be unset as readonly.
+     * @param {...string[]} fields The fields which will be unset as readonly.
      * @memberof FieldStateManager
      */
-    public UnsetReadonly(...fields: TFields[]): void {
+    public UnsetReadonly(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -131,10 +131,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Unset given fields as required.
      *
-     * @param {...TFields[]} fields The given fields which will be unset as required.
+     * @param {...string[]} fields The given fields which will be unset as required.
      * @memberof FieldStateManager
      */
-    public UnsetRequired(...fields: TFields[]): void {
+    public UnsetRequired(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -149,10 +149,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Unset the given fields as visible.
      *
-     * @param {...TFields[]} fields The fields which will be unset as visible.
+     * @param {...string[]} fields The fields which will be unset as visible.
      * @memberof FieldStateManager
      */
-    public UnsetVisibilty(...fields: TFields[]): void {
+    public UnsetVisibilty(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -167,10 +167,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Set the given fields as disabled.
      *
-     * @param {...TFields[]} fields The fields which will be disabled.
+     * @param {...string[]} fields The fields which will be disabled.
      * @memberof FieldStateManager
      */
-    public SetDisabled(...fields: TFields[]): void {
+    public SetDisabled(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -185,10 +185,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Set the given fields as readonly.
      *
-     * @param {...TFields[]} fields The fields which will be set as readonly.
+     * @param {...string[]} fields The fields which will be set as readonly.
      * @memberof FieldStateManager
      */
-    public SetReadonly(...fields: TFields[]): void {
+    public SetReadonly(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -203,10 +203,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Set the given fields as required.
      *
-     * @param {...TFields[]} fields The fields which will be set as required.
+     * @param {...string[]} fields The fields which will be set as required.
      * @memberof FieldStateManager
      */
-    public SetRequired(...fields: TFields[]): void {
+    public SetRequired(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -222,10 +222,10 @@ export class FieldStateManager<TFields extends string> {
     /**
      * Set the given fields as visible.
      *
-     * @param {...TFields[]} fields The fields wich will be set visible.
+     * @param {...string[]} fields The fields wich will be set visible.
      * @memberof FieldStateManager
      */
-    public SetVisibilty(...fields: TFields[]): void {
+    public SetVisibilty(...fields: string[]): void {
         if (!fields) {
             throw new Error("'fields' parameter is null, but expected an array of TFields.");
         }
@@ -241,11 +241,11 @@ export class FieldStateManager<TFields extends string> {
      * Set the given field as disabled or enabled.
      *
      * @private
-     * @param {TFields[]} fields The fields to set.
+     * @param {string[]} fields The fields to set.
      * @param {boolean} disabled True disables the given fields, false will enable these.
      * @memberof FieldStateManager
      */
-    private SetFieldsDisabled(fields: TFields[], disabled: boolean): void {
+    private SetFieldsDisabled(fields: string[], disabled: boolean): void {
         fields.forEach((field) => {
             if (document.getElementById(field)) {
                 if (disabled) {
@@ -263,11 +263,11 @@ export class FieldStateManager<TFields extends string> {
      * Set given fields as readonly or as writable.
      *
      * @private
-     * @param {TFields[]} fields The fields to set.
+     * @param {string[]} fields The fields to set.
      * @param {boolean} readonly True set the given fields to required, false to not required.
      * @memberof FieldStateManager
      */
-    private SetFieldsReadonly(fields: TFields[], readonly: boolean): void {
+    private SetFieldsReadonly(fields: string[], readonly: boolean): void {
         fields?.forEach((field) => {
             if (document.getElementById(field)) {
                 if (readonly) {
@@ -285,11 +285,11 @@ export class FieldStateManager<TFields extends string> {
      * Set the given fields as required or not required.
      *
      * @private
-     * @param {TFields[]} fields The fields to set.
+     * @param {string[]} fields The fields to set.
      * @param {boolean} required True set the given fields to required, false to not required.
      * @memberof FieldStateManager
      */
-    private SetFieldsRequired(fields: TFields[], required: boolean): void {
+    private SetFieldsRequired(fields: string[], required: boolean): void {
         fields?.forEach((field) => {
             if (document.getElementById(field)) {
                 if (required) {
@@ -307,11 +307,11 @@ export class FieldStateManager<TFields extends string> {
      * Set the given fields as visible or hidden.
      *
      * @private 
-     * @param {TFields[]} fields The fields to set.
+     * @param {string[]} fields The fields to set.
      * @param {boolean} visible True set the given fields as visible, false will set these as hidden.
      * @memberof FieldStateManager
      */
-    private SetFieldsVisibilty(fields: TFields[], visible: boolean): void {
+    private SetFieldsVisibilty(fields: string[], visible: boolean): void {
         fields.forEach((field) => {
             if (document.getElementById(field)) {
                 if (visible) {
