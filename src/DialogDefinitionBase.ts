@@ -23,15 +23,15 @@ export abstract class DialogDefinitionBase<TElements extends IElementDefinitions
     /**
      * Creates an instance of DialogDefinitionBase.
      * 
-     * @param {TElements} elementDedifition
+     * @param {TElements} elementDefinition
      * @param {TPages} pages
      * @param {TSections} sections
      * @param {TRows} rows
      * @param {TColumns} columns
      * @memberof DialogDefinitionBase
      */
-    protected constructor(elementDedifition: TElements, pages: TPages, sections: TSections, rows: TRows, columns: TColumns) {
-        this.elements = elementDedifition;
+    protected constructor(elementDefinition: TElements, pages: TPages, sections: TSections, rows: TRows, columns: TColumns) {
+        this.elements = elementDefinition;
         this.pages = pages;
         this.sections = sections;
         this.rows = rows;
