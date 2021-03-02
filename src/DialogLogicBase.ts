@@ -1,5 +1,6 @@
 import * as Utils from "./Utils";
 import { FieldStateManager } from './FieldStateManager';
+import { IDialogDefinition } from "./IDialogDefinition";
 
 /**
  * Base class for dialog logics.
@@ -10,33 +11,36 @@ import { FieldStateManager } from './FieldStateManager';
  * @template TSteps The string enum of steps.
  * @template TFieldsType The type of fields enum.
  * @template TFields The string enum of fields 
+ * @template TDefinition
  */
-export abstract class DialogLogicBase<TSteps, TFieldsType, TFields extends string> {
-    private readonly fields: TFieldsType;
+export abstract class DialogLogicBase<TSteps, TDefinition extends IDialogDefinition> {
+    private readonly definition: TDefinition;
+    private readonly fieldStateManager: FieldStateManager;
     private readonly steps: TSteps;
-    private readonly fieldStateManager: FieldStateManager<TFields>;
 
     /**
-     * Creates a new instance of this class.
-     */
-    constructor(steps: TSteps, fields: TFieldsType) {
-        this.steps = steps;
-        this.fields = fields as never;
-        this.fieldStateManager = new FieldStateManager<TFields>();
-    }
-
-
-
-    /**
-     * Available dialog fields.
-     *
-     * @readonly
-     * @protected
-     * @type {TFieldsType}
+     * Creates an instance of DialogLogicBase.
+     * 
+     * @param {TSteps} steps
+     * @param {TFieldsType} fields
      * @memberof DialogLogicBase
      */
-    protected get Fields(): TFieldsType {
-        return this.fields;
+    protected constructor(steps: TSteps, definition: TDefinition) {
+        this.steps = steps;
+        this.definition = definition;
+
+        this.fieldStateManager = new FieldStateManager();
+    }
+
+    /**
+     * The definition for this dialog.
+     *
+     * @readonly
+     * @type {TDefinition}
+     * @memberof DialogLogicBase
+     */
+    public get Definition(): TDefinition {
+        return this.definition;
     }
 
     /**
@@ -51,7 +55,7 @@ export abstract class DialogLogicBase<TSteps, TFieldsType, TFields extends strin
         return this.steps;
     }
 
-    protected get FSN(): FieldStateManager<TFields> {
+    protected get FSN(): FieldStateManager {
         return this.fieldStateManager;
     }
 
@@ -77,4 +81,3 @@ export abstract class DialogLogicBase<TSteps, TFieldsType, TFields extends strin
         return Utils.IsViewMode();
     }
 }
-

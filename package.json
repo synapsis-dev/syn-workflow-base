@@ -6,12 +6,12 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "typedoc --out docs --theme minimal src",
     "lint": "eslint ./src/**/*.{js,ts,tsx}",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
-    "docs": "typedoc --out docs --target es6 --theme minimal --mode file src"
+    "docs": "typedoc --out docs --theme minimal src"
   },
   "author": "",
   "license": "ISC",
@@ -44,18 +44,17 @@
   },
   "devDependencies": {
     "@jobrouter/api": "^5.1.0-alpha.1",
-    "@types/jquery": "^3.3.31",
-    "@types/node": "^14.11.2",
-    "@typescript-eslint/eslint-plugin": "^4.2.0",
-    "@typescript-eslint/parser": "^4.2.0",
-    "eslint": "^7.9.0",
-    "eslint-plugin-jsdoc": "^30.5.1",
-    "eslint-plugin-prefer-arrow": "^1.2.1",
-    "jest": "^26.4.2",
-    "jest-config": "^26.4.2",
+    "@types/jquery": "^3.5.5",
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.21.0",
+    "eslint-plugin-jsdoc": "^32.2.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "jest": "^26.6.3",
+    "jest-config": "^26.6.3",
     "rimraf": "^3.0.2",
-    "typedoc": "^0.16.11",
-    "typescript": "^4.0.3"
-  },
-  "dependencies": {}
+    "typedoc": "^0.20.28",
+    "typescript": "^4.2.2"
+  }
 }
