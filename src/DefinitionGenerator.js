@@ -51,6 +51,7 @@ function GenerateDialogDefinition() {
 */
 export enum ${dialog}${type}s {`;
     }
+
     var name = dialogIdentifier.dialog;
     var pageDefinition = CreateHeader(name, "Page");
     var sectionDefinition = CreateHeader(name, "Section");
@@ -58,14 +59,35 @@ export enum ${dialog}${type}s {`;
     var columnDefinition = CreateHeader(name, "Column");
 
     var elementDefinitionInterface = `
+/**
+ * Interface for element definitions of dialog '${name}' to get type definition support durring development.
+ *
+ * @interface I${name}ElementDefinitions
+ * @extends {IElementDefinitions}
+ */
+interface I${name}ElementDefinitions {`;
+    
+    var elementDefinitionObject = `const ${name}ElementDefinitions = {`;
+
+    var dialogDefinition = `
+/**
+ * Dialog definition for '${name}'.
+ *
+ * @export
+ * @class ${name}Definition
+ * @extends {DialogDefinitionBase<I${name}ElementDefinitions, typeof ${name}Pages, typeof ${name}Sections, typeof ${name}Rows, typeof ${name}Columns>}
+ */
+export class ${name}Definition extends DialogDefinitionBase<I${name}ElementDefinitions, typeof ${name}Pages, typeof ${name}Sections, typeof ${name}Rows, typeof ${name}Columns> {
+
     /**
-     * Interface for element definitions of dialog '${name}' to get type definition support durring development.
-     *
-     * @interface I${name}ElementDefinitions
-     * @extends {IElementDefinitions}
+     * Creates an instance of ${name}Definition.
+     * 
+     * @memberof ${name}Definition
      */
-    interface I${name}ElementDefinitions extends IElementDefinitions {`;
-    var elementDefinitionObject = `const mainDialogElementDefinitions = {`;
+    public constructor() {
+        super(${name}ElementDefinitions, ${name}Pages, ${name}Sections, ${name}Rows, ${name}Columns);
+    }
+}`;
 
     $JR_DESIGNER_ELEMENTS.forEach((element, key) => {
         switch (element.type) {
@@ -97,14 +119,24 @@ export enum ${dialog}${type}s {`;
     rowDefinition += `\n}`;
     columnDefinition += `\n}`;
     elementDefinitionInterface += `\n}`;
-    elementDefinitionObject += `\n} as I${name}ElementDefinitions;`
+    elementDefinitionObject += `\n} as I${name}ElementDefinitions;`;
 
-    return {
-        pages: pageDefinition,
-        sections: sectionDefinition,
-        rows: rowDefinition,
-        columns: columnDefinition,
-        elementInterface: elementDefinitionInterface,
-        elementDefintionObject: elementDefinitionObject
-    };
+    var result = pageDefinition +
+        '\n' + sectionDefinition +
+        '\n' + rowDefinition +
+        '\n' + columnDefinition +
+        '\n' + elementDefinitionInterface +
+        '\n' + elementDefinitionObject +
+        '\n' + dialogDefinition;
+    
+    return result;
+    // return {
+    //     pages: pageDefinition,
+    //     sections: sectionDefinition,
+    //     rows: rowDefinition,
+    //     columns: columnDefinition,
+    //     elementInterface: elementDefinitionInterface,
+    //     elementDefintionObject: elementDefinitionObject,
+    //     dialogDefinition: dialogDefinition,
+    // };
 }

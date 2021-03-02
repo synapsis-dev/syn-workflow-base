@@ -1,5 +1,4 @@
 import { IDialogDefinition } from "./IDialogDefinition";
-import { IElementDefinitions } from "./IElementDefinitions";
 
 /**
  * Definition base.
@@ -13,7 +12,7 @@ import { IElementDefinitions } from "./IElementDefinitions";
  * @template TRows
  * @template TColumns
  */
-export abstract class DialogDefinitionBase<TElements extends IElementDefinitions, TPages, TSections, TRows, TColumns> implements IDialogDefinition {
+export abstract class DialogDefinitionBase<TElements, TPages, TSections, TRows, TColumns> implements IDialogDefinition {
     private readonly columns: TColumns;
     private readonly elements: TElements;
     private readonly pages: TPages;
