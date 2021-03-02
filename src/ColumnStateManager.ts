@@ -8,11 +8,11 @@ import * as Utils from "./Utils";
  * @template TColumns
  */
 export class ColumnStateManager<TColumns extends string> {
-    private subtable: string;
     private columns: Set<TColumns>;
     private disabledColumns: Set<TColumns>;
     private readonlyColumns: Set<TColumns>;
     private requiredColumns: Set<TColumns>;
+    private subtable: string;
     private visibleColumns: Set<TColumns>;
 
     /**
@@ -73,15 +73,16 @@ export class ColumnStateManager<TColumns extends string> {
     }
 
     /**
-     * Unset all required columns temporary. With ResetRequiredColumns they will be reseted.
+     * Resets required state for all columns.
      *
      * @memberof ColumnStateManager
      */
-    public UnsetRequiredColumnsTemporary(): void {
-        this.requiredColumns.forEach((field) => {
-            if (document.getElementById(field)) {
-                jr_set_required(field, false);
-            }
+    public ResetRequiredcolumns(): void {
+        this.columns.forEach((column) => {
+            const required = this.requiredColumns.has(column);
+            jr_loop_table(this.subtable, (subtable, rowId) => {
+                jr_set_required(Utils.GetSubtableFieldId(subtable, rowId, column), required);
+            });
         });
     }
 
@@ -98,92 +99,6 @@ export class ColumnStateManager<TColumns extends string> {
                 jr_hide_subtable_column(this.subtable, column);
             }
         });
-    }
-
-    /**
-     * Resets required state for all columns.
-     *
-     * @memberof ColumnStateManager
-     */
-    public ResetRequiredcolumns(): void {
-        this.columns.forEach((column) => {
-            const required = this.requiredColumns.has(column);
-            jr_loop_table(this.subtable, (subtable, rowId) => {
-                jr_set_required(Utils.GetSubtableFieldId(subtable, rowId, column), required);
-            });
-        });
-    }
-
-    /**
-     * Unset the given columns as disabled.
-     *
-     * @param {...TColumns[]} columns The columns which will be unset as disabled.
-     * @memberof ColumnStateManager
-     */
-    public UnsetDisabled(...columns: TColumns[]): void {
-        if (!columns) {
-            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
-        }
-
-        if (!Array.isArray(columns)) {
-            throw new Error("'columns' parameter is not an array.");
-        }
-
-        this.SetColumnsDisabled(columns, false);
-    }
-
-    /**
-     * Unset the given columns as readonly.
-     *
-     * @param {...TColumns[]} columns The columns which will be unset as readonly.
-     * @memberof ColumnStateManager
-     */
-    public UnsetReadonly(...columns: TColumns[]): void {
-        if (!columns) {
-            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
-        }
-
-        if (!Array.isArray(columns)) {
-            throw new Error("'columns' parameter is not an array.");
-        }
-
-        this.SetColumnsReadonly(columns, false);
-    }
-
-    /**
-     * Unset given columns as required.
-     *
-     * @param {...TColumns[]} columns The given columns which will be unset as required.
-     * @memberof ColumnStateManager
-     */
-    public UnsetRequired(...columns: TColumns[]): void {
-        if (!columns) {
-            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
-        }
-
-        if (!Array.isArray(columns)) {
-            throw new Error("'columns' parameter is not an array.");
-        }
-
-        this.SetColumnsRequired(columns, false);
-    }
-
-    /**
-     * Unset the given columns as visible.
-     *
-     * @param {...TColumns[]} columns The columns which will be unset as visible.
-     * @memberof ColumnStateManager
-     */
-    public UnsetVisibilty(...columns: TColumns[]): void {
-        if (!columns) {
-            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
-        }
-
-        if (!Array.isArray(columns)) {
-            throw new Error("'columns' parameter is not an array.");
-        }
-
-        this.SetColumnsVisibilty(columns, false);
     }
 
     /**
@@ -257,6 +172,103 @@ export class ColumnStateManager<TColumns extends string> {
         }
 
         this.SetColumnsVisibilty(columns, true);
+    }
+
+    /**
+     * Unset the given columns as disabled.
+     *
+     * @param {...TColumns[]} columns The columns which will be unset as disabled.
+     * @memberof ColumnStateManager
+     */
+    public UnsetDisabled(...columns: TColumns[]): void {
+        if (!columns) {
+            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
+        }
+
+        if (!Array.isArray(columns)) {
+            throw new Error("'columns' parameter is not an array.");
+        }
+
+        this.SetColumnsDisabled(columns, false);
+    }
+
+    /**
+     * Unset the given columns as readonly.
+     *
+     * @param {...TColumns[]} columns The columns which will be unset as readonly.
+     * @memberof ColumnStateManager
+     */
+    public UnsetReadonly(...columns: TColumns[]): void {
+        if (!columns) {
+            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
+        }
+
+        if (!Array.isArray(columns)) {
+            throw new Error("'columns' parameter is not an array.");
+        }
+
+        this.SetColumnsReadonly(columns, false);
+    }
+
+    /**
+     * Unset given columns as required.
+     *
+     * @param {...TColumns[]} columns The given columns which will be unset as required.
+     * @memberof ColumnStateManager
+     */
+    public UnsetRequired(...columns: TColumns[]): void {
+        if (!columns) {
+            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
+        }
+
+        if (!Array.isArray(columns)) {
+            throw new Error("'columns' parameter is not an array.");
+        }
+
+        this.SetColumnsRequired(columns, false);
+    }
+
+    /**
+     * Unset all required columns temporary. With ResetRequiredColumns they will be reseted.
+     *
+     * @memberof ColumnStateManager
+     */
+    public UnsetRequiredColumnsTemporary(): void {
+        this.requiredColumns.forEach((field) => {
+            if (document.getElementById(field)) {
+                jr_set_required(field, false);
+            }
+        });
+    }
+
+    /**
+     * Unset the given columns as visible.
+     *
+     * @param {...TColumns[]} columns The columns which will be unset as visible.
+     * @memberof ColumnStateManager
+     */
+    public UnsetVisibilty(...columns: TColumns[]): void {
+        if (!columns) {
+            throw new Error("'columns' parameter is null, but expected an array of TColumns.");
+        }
+
+        if (!Array.isArray(columns)) {
+            throw new Error("'columns' parameter is not an array.");
+        }
+
+        this.SetColumnsVisibilty(columns, false);
+    }
+
+    /**
+     * Get the header id of of given column
+     *
+     * @private
+     * @param {string} column The column
+     * @returns {string}
+     * @memberof ColumnStateManager
+     */
+    private GetColumnHeaderId(column: string): string {
+        return `div_${this.subtable}_${column}_header`;
     }
 
     /**
@@ -351,17 +363,5 @@ export class ColumnStateManager<TColumns extends string> {
                 }
             }
         });
-    }
-
-    /**
-     * Get the header id of of given column
-     *
-     * @private
-     * @param {string} column The column
-     * @returns {string}
-     * @memberof ColumnStateManager
-     */
-    private GetColumnHeaderId(column: string): string {
-        return `div_${this.subtable}_${column}_header`;
     }
 }

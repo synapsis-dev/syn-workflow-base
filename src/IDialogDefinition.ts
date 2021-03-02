@@ -1,4 +1,10 @@
 
+/**
+ * Dialog definition interface.
+ *
+ * @export
+ * @interface IDialogDefinition
+ */
 export interface IDialogDefinition {
     /**
      * Page ids for this dialog.

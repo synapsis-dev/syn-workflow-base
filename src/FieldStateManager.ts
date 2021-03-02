@@ -67,19 +67,6 @@ export class FieldStateManager {
     }
 
     /**
-     * Unset all required fields temporary. With ResetRequiredFields they will be reseted.
-     *
-     * @memberof FieldStateManager
-     */
-    public UnsetRequiredFieldsTemporary(): void {
-        this.requiredFields.forEach((field) => {
-            if (document.getElementById(field)) {
-                jr_set_required(field, false);
-            }
-        });
-    }
-
-    /**
      * Resets the temporary unset required fields.
      *
      * @memberof FieldStateManager
@@ -90,78 +77,6 @@ export class FieldStateManager {
                 jr_set_required(field, true);
             }
         });
-    }
-
-    /**
-     * Unset the given fields as disabled.
-     *
-     * @param {...string[]} fields The fields which will be unset as disabled.
-     * @memberof FieldStateManager
-     */
-    public UnsetDisabled(...fields: string[]): void {
-        if (!fields) {
-            throw new Error("'fields' parameter is null, but expected an array of TFields.");
-        }
-
-        if (!Array.isArray(fields)) {
-            throw new Error("'fields' parameter is not an array.");
-        }
-
-        this.SetFieldsDisabled(fields, false);
-    }
-
-    /**
-     * Unset the given fields as readonly.
-     *
-     * @param {...string[]} fields The fields which will be unset as readonly.
-     * @memberof FieldStateManager
-     */
-    public UnsetReadonly(...fields: string[]): void {
-        if (!fields) {
-            throw new Error("'fields' parameter is null, but expected an array of TFields.");
-        }
-
-        if (!Array.isArray(fields)) {
-            throw new Error("'fields' parameter is not an array.");
-        }
-
-        this.SetFieldsReadonly(fields, false);
-    }
-
-    /**
-     * Unset given fields as required.
-     *
-     * @param {...string[]} fields The given fields which will be unset as required.
-     * @memberof FieldStateManager
-     */
-    public UnsetRequired(...fields: string[]): void {
-        if (!fields) {
-            throw new Error("'fields' parameter is null, but expected an array of TFields.");
-        }
-
-        if (!Array.isArray(fields)) {
-            throw new Error("'fields' parameter is not an array.");
-        }
-
-        this.SetFieldsRequired(fields, false);
-    }
-
-    /**
-     * Unset the given fields as visible.
-     *
-     * @param {...string[]} fields The fields which will be unset as visible.
-     * @memberof FieldStateManager
-     */
-    public UnsetVisibilty(...fields: string[]): void {
-        if (!fields) {
-            throw new Error("'fields' parameter is null, but expected an array of TFields.");
-        }
-
-        if (!Array.isArray(fields)) {
-            throw new Error("'fields' parameter is not an array.");
-        }
-
-        this.SetFieldsVisibilty(fields, false);
     }
 
     /**
@@ -235,6 +150,91 @@ export class FieldStateManager {
         }
 
         this.SetFieldsVisibilty(fields, true);
+    }
+
+    /**
+     * Unset the given fields as disabled.
+     *
+     * @param {...string[]} fields The fields which will be unset as disabled.
+     * @memberof FieldStateManager
+     */
+    public UnsetDisabled(...fields: string[]): void {
+        if (!fields) {
+            throw new Error("'fields' parameter is null, but expected an array of TFields.");
+        }
+
+        if (!Array.isArray(fields)) {
+            throw new Error("'fields' parameter is not an array.");
+        }
+
+        this.SetFieldsDisabled(fields, false);
+    }
+
+    /**
+     * Unset the given fields as readonly.
+     *
+     * @param {...string[]} fields The fields which will be unset as readonly.
+     * @memberof FieldStateManager
+     */
+    public UnsetReadonly(...fields: string[]): void {
+        if (!fields) {
+            throw new Error("'fields' parameter is null, but expected an array of TFields.");
+        }
+
+        if (!Array.isArray(fields)) {
+            throw new Error("'fields' parameter is not an array.");
+        }
+
+        this.SetFieldsReadonly(fields, false);
+    }
+
+    /**
+     * Unset given fields as required.
+     *
+     * @param {...string[]} fields The given fields which will be unset as required.
+     * @memberof FieldStateManager
+     */
+    public UnsetRequired(...fields: string[]): void {
+        if (!fields) {
+            throw new Error("'fields' parameter is null, but expected an array of TFields.");
+        }
+
+        if (!Array.isArray(fields)) {
+            throw new Error("'fields' parameter is not an array.");
+        }
+
+        this.SetFieldsRequired(fields, false);
+    }
+
+    /**
+     * Unset all required fields temporary. With ResetRequiredFields they will be reseted.
+     *
+     * @memberof FieldStateManager
+     */
+    public UnsetRequiredFieldsTemporary(): void {
+        this.requiredFields.forEach((field) => {
+            if (document.getElementById(field)) {
+                jr_set_required(field, false);
+            }
+        });
+    }
+
+    /**
+     * Unset the given fields as visible.
+     *
+     * @param {...string[]} fields The fields which will be unset as visible.
+     * @memberof FieldStateManager
+     */
+    public UnsetVisibilty(...fields: string[]): void {
+        if (!fields) {
+            throw new Error("'fields' parameter is null, but expected an array of TFields.");
+        }
+
+        if (!Array.isArray(fields)) {
+            throw new Error("'fields' parameter is not an array.");
+        }
+
+        this.SetFieldsVisibilty(fields, false);
     }
 
     /**
