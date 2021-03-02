@@ -1,3 +1,17 @@
+# [1.3.0](https://github.com/dkanehl/syn-workflow-base/compare/v1.2.0...v1.3.0) (2021-03-02)
+
+
+### Bug Fixes
+
+* fix property name of registry component ([42d6951](https://github.com/dkanehl/syn-workflow-base/commit/42d6951324282a52c54c225e623e75f8d74b1b9c))
+
+
+### Features
+
+* implement definition generator functions ([e2e175c](https://github.com/dkanehl/syn-workflow-base/commit/e2e175c6b0b9717d4723d3ffc6c8e77202361c64))
+
+
+
 # [1.2.0](https://github.com/dkanehl/syn-workflow-base/compare/v1.1.6...v1.2.0) (2021-02-11)
 
 ### Features
