@@ -13,10 +13,10 @@ import * as Utils from "./Utils";
  * @template TColumns The string enum of subtable columns.
  */
 export abstract class SubtableLogicBase<TSteps, TSubtable extends string, TColumnType, TColumns extends string> {
+    private readonly columnStateManager: ColumnStateManager<TColumns>;
     private readonly columns: TColumnType;
     private readonly name: TSubtable;
     private readonly steps: TSteps;
-    private readonly columnStateManager: ColumnStateManager<TColumns>;
 
     /**
      * Creates a new instance of this type.
