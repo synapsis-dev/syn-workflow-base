@@ -26,8 +26,12 @@ export function IsViewMode(): boolean {
  * @returns {string} Return the data folder url from the runnning process.
  */
 export function GetProcessDataUrl(): string {
-    if ($JRSTEP.processname && $JRSTEP.version) {
+    if ((window as any).$JRSTEP?.processname && (window as any).$JRSTEP?.version) {
         return "data/" + $JRSTEP.processname + "/" + $JRSTEP.version;
+    }
+
+    if ((window as any).dialogIdentifier?.process && (window as any).dialogIdentifier?.version) {
+        return "data/" + (window as any).dialogIdentifier.processname + "/" + (window as any).dialogIdentifier.version;
     }
 
     const url = new URL(window.location.href);
