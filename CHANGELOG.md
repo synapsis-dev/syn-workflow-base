@@ -1,3 +1,12 @@
+# [1.3.1](https://github.com/dkanehl/syn-workflow-base/compare/v1.3.0...v1.3.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* fix `$JRSTEP is not defined` error when `GetProcessDataUrl` is called in designer ([6bf73cd](https://github.com/dkanehl/syn-workflow-base/commit/6bf73cd63674aeb77a21a99828a9082e02e5dd4f))
+
+
+
 # [1.3.0](https://github.com/dkanehl/syn-workflow-base/compare/v1.2.0...v1.3.0) (2021-03-02)
 
 
