@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.0...v1.4.1) (2021-03-06)
+
+
+### Features
+
+* add missing id and value property for radio values ([a49ec60](https://github.com/dkanehl/syn-workflow-base/commit/a49ec600e1267f311a89e1786262094de88eb8a1))
+
+
+
 # [1.4.0](https://github.com/dkanehl/syn-workflow-base/compare/v1.3.1...v1.4.0) (2021-03-06)
 
 
