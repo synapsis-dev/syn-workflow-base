@@ -14,6 +14,17 @@ import { BaseElementDefinition } from "./BaseElementDefinition";
  */
 export class SimpleValueElementDefinition<T extends ElementType> extends BaseElementDefinition implements IValueElementDefinition<T> {
     /**
+     * Creates an instance of SimpleValueElementDefinition.
+     * 
+     * @param {string} id The id of the element.
+     * @param {T} type The element type.
+     * @memberof SimpleValueElementDefinition
+     */
+    constructor(id :string, type: T) {
+        super(id, type);
+    }
+    
+    /**
      * Get the element value.
      *
      * @readonly

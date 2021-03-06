@@ -15,8 +15,8 @@ export class BaseElementDefinition implements IBaseElementDefinition {
     /**
      * Creates an instance of BaseElementDefinition.
      *
-     * @param {string} id
-     * @param {ElementType} type
+     * @param {string} id The id of the element.
+     * @param {ElementType} type The element type.
      * @memberof BaseElementDefinition
      */
     public constructor(id: string, type: ElementType) {
