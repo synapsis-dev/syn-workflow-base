@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/dkanehl/syn-workflow-base/compare/v1.3.1...v1.4.0) (2021-03-06)
+
+
+### Features
+
+* implement `caseIt` library ([465abaa](https://github.com/dkanehl/syn-workflow-base/commit/465abaadebc912d7d9f68a62f24e2ed4b2951850))
+* implement a second batch new element definitions ([945f69a](https://github.com/dkanehl/syn-workflow-base/commit/945f69a1a87e3c4d40e5a62f4c9a8b4f3913c2aa))
+* implement the first batch of new definitions ([25bf6cd](https://github.com/dkanehl/syn-workflow-base/commit/25bf6cd606f3b04ac326012848b639cbcdd1372b))
+* update generator function to generate the new definition types ([37e5d33](https://github.com/dkanehl/syn-workflow-base/commit/37e5d330a88468dd29dc24638217befceab084f3))
+
+
+
 # [1.3.1](https://github.com/dkanehl/syn-workflow-base/compare/v1.3.0...v1.3.1) (2021-03-04)
 
 
