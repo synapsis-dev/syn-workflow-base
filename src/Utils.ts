@@ -1,3 +1,4 @@
+export * from './CaseIt';
 
 /**
  * Indicates if dialog is in edit mode.
@@ -345,7 +346,7 @@ export function SetDefaultStyle(section?: CSSStyleDeclaration, sectionTitle?: CS
     document.querySelectorAll<HTMLElement>("tr[id$='label']").forEach((element) => {
         const child = element.querySelector("div");
 
-        SetElementStyle(element, label);       
+        SetElementStyle(element, label);
         SetElementStyle(child, labelDescription);
     });
 }
