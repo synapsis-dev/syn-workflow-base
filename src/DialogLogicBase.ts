@@ -1,6 +1,5 @@
 import * as Utils from "./Utils";
 import { FieldStateManager } from './FieldStateManager';
-import { IDialogDefinition } from "./IDialogDefinition";
 
 /**
  * Base class for dialog logics.
@@ -13,7 +12,7 @@ import { IDialogDefinition } from "./IDialogDefinition";
  * @template TFields The string enum of fields 
  * @template TDefinition
  */
-export abstract class DialogLogicBase<TSteps, TDefinition extends IDialogDefinition> {
+export abstract class DialogLogicBase<TSteps, TDefinition> {
     private readonly definition: TDefinition;
     private readonly fieldStateManager: FieldStateManager;
     private readonly steps: TSteps;
