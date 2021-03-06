@@ -23,6 +23,28 @@ export class RadioValueDefinition {
     }
 
     /**
+     * Get the id of this element.
+     *
+     * @readonly
+     * @type {string}
+     * @memberof RadioValueDefinition
+     */
+    public get Id(): string {
+        return Utils.GetRadioId(this.element, this.value);
+    }
+
+    /**
+     * Get the value of this element.
+     *
+     * @readonly
+     * @type {string}
+     * @memberof RadioValueDefinition
+     */
+    public get Value(): string {
+        return this.value;
+    }
+
+    /**
      * Gets the 'disabled' state of this element.
      *
      * @type {boolean}
