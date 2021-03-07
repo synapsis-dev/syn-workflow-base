@@ -1,6 +1,6 @@
 import { ElementType } from "../ElementTypes";
-import { SimpleValueElementDefinition } from './SimpleValueElementDefinition';
 import { IElementDefinition } from "./IElementDefinition";
+import { SimpleValueElementDefinition } from './SimpleValueElementDefinition';
 
 /**
  * Element definition with id, type, disabled, readonly, required and visible properties for elements like textbox, decimal and date etc.
@@ -67,28 +67,5 @@ export class ElementDefinition<T extends ElementType> extends SimpleValueElement
      */
     public set Required(value: boolean) {
         jr_set_required(this.Id, value);
-    }
-
-    /**
-     * Get the 'visible' state of this element.
-     *
-     * @type {boolean}
-     * @memberof ElementDefinition
-     */
-    public get Visible(): boolean {
-        return jr_is_visible(this.Id);
-    }
-
-    /**
-     * Sets the 'visible' state of this element.
-     *
-     * @memberof ElementDefinition
-     */
-    public set Visible(value: boolean) {
-        if (value) {
-            jr_show(this.Id);
-        } else {
-            jr_hide(this.Id);
-        }
     }
 }

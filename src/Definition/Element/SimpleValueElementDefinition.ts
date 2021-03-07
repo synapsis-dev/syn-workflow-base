@@ -1,10 +1,10 @@
 import { ElementType } from "../ElementTypes";
-import { ValueType } from "./ValueType";
 import { IValueElementDefinition } from './IValueElementDefinition';
-import { BaseElementDefinition } from "./BaseElementDefinition";
+import { ValueType } from "./ValueType";
+import { VisibleElementDefinition } from './VisibleElementDefinition';
 
 /**
- * Simple element with only id, type and value properties for elements like text and description etc.
+ * Simple element with only id, type, visible and value properties for elements like text and description etc.
  *
  * @export
  * @class SimpleValueElementDefinition
@@ -12,7 +12,7 @@ import { BaseElementDefinition } from "./BaseElementDefinition";
  * @implements {IValueElementDefinition<T>}
  * @template T
  */
-export class SimpleValueElementDefinition<T extends ElementType> extends BaseElementDefinition implements IValueElementDefinition<T> {
+export class SimpleValueElementDefinition<T extends ElementType> extends VisibleElementDefinition implements IValueElementDefinition<T> {
     /**
      * Creates an instance of SimpleValueElementDefinition.
      * 
@@ -20,10 +20,10 @@ export class SimpleValueElementDefinition<T extends ElementType> extends BaseEle
      * @param {T} type The element type.
      * @memberof SimpleValueElementDefinition
      */
-    constructor(id :string, type: T) {
+    constructor(id: string, type: T) {
         super(id, type);
     }
-    
+
     /**
      * Get the element value.
      *

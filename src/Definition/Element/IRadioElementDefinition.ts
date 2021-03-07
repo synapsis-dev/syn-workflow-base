@@ -1,8 +1,8 @@
-import { RadioValues } from "./RadioValues";
+import { ElementType } from '../ElementTypes';
 import { IDisabledElementDefinition } from "./IDisabledElementDefinition";
 import { IRequiredElementDefinition } from "./IRequiredElementDefinition";
-import { IValueElementDefinition } from './IValueElementDefinition';
-import { ElementType } from '../ElementTypes';
+import { RadioValues } from "./RadioValues";
+import { ValueType } from "./ValueType";
 
 /**
  * Radio element definition.
@@ -12,7 +12,7 @@ import { ElementType } from '../ElementTypes';
  * @extends {IDisabledElementDefinition}
  * @extends {IRequiredElementDefinition}
  */
-export interface IRadioElementDefinition<T extends RadioValues<string>> extends IDisabledElementDefinition, IRequiredElementDefinition, IValueElementDefinition<ElementType.Radio> {
+export interface IRadioElementDefinition<T extends RadioValues<string>> extends IDisabledElementDefinition, IRequiredElementDefinition {
     /**
      * Values of the radio element.
      *
@@ -36,4 +36,12 @@ export interface IRadioElementDefinition<T extends RadioValues<string>> extends 
      * @memberof IRadioElementDefinition
      */
     Required: boolean;
+
+    /**
+     * Gets or sets the value of this element.
+     *
+     * @type {ValueType<T>}
+     * @memberof IValueElementDefinition
+     */
+     Value: ValueType<ElementType.Radio>;
 }
