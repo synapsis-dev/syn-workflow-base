@@ -1,9 +1,9 @@
 import { ElementType } from "../ElementTypes";
+import { BaseElementDefinition } from './BaseElementDefinition';
 import { IRadioElementDefinition } from "./IRadioElementDefinition";
 import { RadioValueDefinition } from "./RadioValueDefinition";
 import { RadioValues } from "./RadioValues";
 import { ValueType } from "./ValueType";
-import { VisibleElementDefinition } from "./VisibleElementDefinition";
 
 /**
  * Radio element definition.
@@ -13,7 +13,7 @@ import { VisibleElementDefinition } from "./VisibleElementDefinition";
  * @extends {BaseElementDefinition}
  * @implements {IRadioElementDefinition}
  */
-export class RadioElementDefinition<T extends RadioValues<string>> extends VisibleElementDefinition implements IRadioElementDefinition<T> {
+export class RadioElementDefinition<T extends RadioValues<string>> extends BaseElementDefinition implements IRadioElementDefinition<T> {
     private readonly values: T;
 
     /**
@@ -88,7 +88,7 @@ export class RadioElementDefinition<T extends RadioValues<string>> extends Visib
      *
      * @readonly
      * @type {ValueType<T>}
-     * @memberof SimpleValueElementDefinition
+     * @memberof RadioElementDefinition
      */
      public get Value(): ValueType<ElementType.Radio> {
         return jr_get_value(this.Id) as never;
@@ -97,7 +97,7 @@ export class RadioElementDefinition<T extends RadioValues<string>> extends Visib
     /**
      * Sets the element value to given value.
      *
-     * @memberof SimpleValueElementDefinition
+     * @memberof RadioElementDefinition
      */
     public set Value(value: ValueType<ElementType.Radio>) {
         jr_set_value(this.Id, value);

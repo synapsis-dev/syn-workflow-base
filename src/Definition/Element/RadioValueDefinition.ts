@@ -11,11 +11,11 @@ export class RadioValueDefinition {
     private readonly value: string;
 
     /**
-     * Creates an instance of RadioActionDefinition.
+     * Creates an instance of RadioValueDefinition.
      *
      * @param {string} element
      * @param {string} value
-     * @memberof RadioActionDefinition
+     * @memberof RadioValueDefinition
      */
     public constructor(element: string, value: string) {
         this.element = element;
