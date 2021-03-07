@@ -1,8 +1,9 @@
 import { ElementType } from "../ElementTypes";
-import { RadioValues } from "./RadioValues";
 import { IRadioElementDefinition } from "./IRadioElementDefinition";
 import { RadioValueDefinition } from "./RadioValueDefinition";
-import { SimpleValueElementDefinition } from "./SimpleValueElementDefinition";
+import { RadioValues } from "./RadioValues";
+import { ValueType } from "./ValueType";
+import { VisibleElementDefinition } from "./VisibleElementDefinition";
 
 /**
  * Radio element definition.
@@ -12,7 +13,7 @@ import { SimpleValueElementDefinition } from "./SimpleValueElementDefinition";
  * @extends {BaseElementDefinition}
  * @implements {IRadioElementDefinition}
  */
-export class RadioElementDefinition<T extends RadioValues<string>> extends SimpleValueElementDefinition<ElementType.Radio> implements IRadioElementDefinition<T> {
+export class RadioElementDefinition<T extends RadioValues<string>> extends VisibleElementDefinition implements IRadioElementDefinition<T> {
     private readonly values: T;
 
     /**
@@ -80,5 +81,25 @@ export class RadioElementDefinition<T extends RadioValues<string>> extends Simpl
      */
     public set Required(value: boolean) {
         jr_set_required(this.Id, value);
+    }
+
+    /**
+     * Get the element value.
+     *
+     * @readonly
+     * @type {ValueType<T>}
+     * @memberof SimpleValueElementDefinition
+     */
+     public get Value(): ValueType<ElementType.Radio> {
+        return jr_get_value(this.Id) as never;
+    }
+
+    /**
+     * Sets the element value to given value.
+     *
+     * @memberof SimpleValueElementDefinition
+     */
+    public set Value(value: ValueType<ElementType.Radio>) {
+        jr_set_value(this.Id, value);
     }
 }

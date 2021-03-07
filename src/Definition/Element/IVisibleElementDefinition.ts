@@ -1,4 +1,5 @@
 import { IBaseElementDefinition } from './IBaseElementDefinition';
+
 /**
  * Element with id, type and visible properties.
  *

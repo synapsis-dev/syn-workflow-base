@@ -21,7 +21,7 @@ export async function GenerateDefinitions(): Promise<string> {
         return GenerateSubtableDedinition(subtableView, subtableViewElements);
     }));
 
-    return `${subtableDefinitions.join(`\n\n`)}\n\n${dialogDefinition}`;
+    return `${subtableDefinitions.join(`\n`)}\n\n${dialogDefinition}`;
 }
 
 export interface IDesignerBaseResultData {
@@ -66,7 +66,15 @@ function GetRadioValues(id: string): string[] {
     return result;
 }
 function GenerateDialogDefinition(dialog: string, elements: IDesignerResults<IDesignerResultData>): string {
-    let interfaceDefinition = `export interface I${Utils.PascalCaseIt(dialog)}Definition {`;
+    let interfaceDefinition = ``;
+    interfaceDefinition += `/**`;
+    interfaceDefinition += `\n * Dialog definition for ${dialog}.`;
+    interfaceDefinition += `\n *`;
+    interfaceDefinition += `\n * @export`;
+    interfaceDefinition += `\n * @interface I${Utils.PascalCaseIt(dialog)}Definition`;
+    interfaceDefinition += `\n */`;
+    interfaceDefinition += `\nexport interface I${Utils.PascalCaseIt(dialog)}Definition {`;
+
     let objectDefinition = `export const ${Utils.PascalCaseIt(dialog)}Definition: I${Utils.PascalCaseIt(dialog)}Definition = {`;
     let typeDefinitions = ``;
 
@@ -120,7 +128,14 @@ function GenerateDialogDefinition(dialog: string, elements: IDesignerResults<IDe
 }
 
 function GenerateSubtableDedinition(subtable: string, elements: IDesignerResults<IDesignerResultData>): string {
-    let typeDefinition = `export enum ${Utils.PascalCaseIt(subtable)}Definition {`;
+    let typeDefinition = ``;
+    typeDefinition += `/**`;
+    typeDefinition += `\n * Definition of ${subtable} subtable view.`;
+    typeDefinition += `\n *`;
+    typeDefinition += `\n * @export`;
+    typeDefinition += `\n * @enum {string}`;
+    typeDefinition += `\n */\n`;
+    typeDefinition += `export enum ${Utils.PascalCaseIt(subtable)}Definition {`;
     for (const key in elements) {
         if (Object.prototype.hasOwnProperty.call(elements, key)) {
             const element = elements[key];

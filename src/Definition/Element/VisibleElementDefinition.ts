@@ -1,5 +1,5 @@
-import { IVisibleElementDefinition } from './IVisibleElementDefinition';
 import { BaseElementDefinition } from "./BaseElementDefinition";
+import { IVisibleElementDefinition } from './IVisibleElementDefinition';
 
 /**
  * Element definition for elements that only have the 'visible' state for elements like pages, section, rows, columns and blanks etc.
