@@ -88,7 +88,7 @@ export class RadioElementDefinition<T extends RadioValues<string>> extends Visib
      *
      * @readonly
      * @type {ValueType<T>}
-     * @memberof SimpleValueElementDefinition
+     * @memberof RadioElementDefinition
      */
      public get Value(): ValueType<ElementType.Radio> {
         return jr_get_value(this.Id) as never;
@@ -97,7 +97,7 @@ export class RadioElementDefinition<T extends RadioValues<string>> extends Visib
     /**
      * Sets the element value to given value.
      *
-     * @memberof SimpleValueElementDefinition
+     * @memberof RadioElementDefinition
      */
     public set Value(value: ValueType<ElementType.Radio>) {
         jr_set_value(this.Id, value);
