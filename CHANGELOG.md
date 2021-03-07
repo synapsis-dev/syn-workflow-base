@@ -1,3 +1,12 @@
+## [1.4.4](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.3...v1.4.4) (2021-03-07)
+
+
+### Bug Fixes
+
+* fix radio elements so they don't have the visible propertie ([6f0cd78](https://github.com/dkanehl/syn-workflow-base/commit/6f0cd7870e609321fa61a221416faf31da1b6352))
+
+
+
 ## [1.4.3](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.2...v1.4.3) (2021-03-07)
 
 
