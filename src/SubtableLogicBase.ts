@@ -35,7 +35,7 @@ export abstract class SubtableLogicBase<TSteps, TSubtable extends string, TColum
      * @type {TSubtable}
      * @memberof SubtableLogicBase
      */
-    protected get Name(): TSubtable {
+    public get Name(): TSubtable {
         return this.name;
     }
 
