@@ -1,3 +1,18 @@
+## [1.4.2](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.0...v1.4.2) (2021-03-07)
+
+
+### Bug Fixes
+
+* simple value elements will now have a visible propertie exept for radio elements and sort some imports ([eb9ea24](https://github.com/dkanehl/syn-workflow-base/commit/eb9ea24cf8e7ee81e02b6d8614a0ccacc7537c2b))
+
+
+### Features
+
+* add missing id and value property for radio values ([a49ec60](https://github.com/dkanehl/syn-workflow-base/commit/a49ec600e1267f311a89e1786262094de88eb8a1))
+* add typedoc comments and change some spacing ([9a2f76c](https://github.com/dkanehl/syn-workflow-base/commit/9a2f76c93edb621ab683de16310a38fc192dfc52))
+
+
+
 ## [1.4.1](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.0...v1.4.1) (2021-03-06)
 
 
