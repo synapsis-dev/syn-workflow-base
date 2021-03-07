@@ -1,3 +1,12 @@
+## [1.4.3](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.2...v1.4.3) (2021-03-07)
+
+
+### Bug Fixes
+
+* make subtable logic `Name` property public ([6d9858d](https://github.com/dkanehl/syn-workflow-base/commit/6d9858df2aa263140e66bc5136d7341791b8b723))
+
+
+
 ## [1.4.2](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.0...v1.4.2) (2021-03-07)
 
 
