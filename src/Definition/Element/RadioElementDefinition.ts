@@ -1,9 +1,9 @@
 import { ElementType } from "../ElementTypes";
+import { BaseElementDefinition } from './BaseElementDefinition';
 import { IRadioElementDefinition } from "./IRadioElementDefinition";
 import { RadioValueDefinition } from "./RadioValueDefinition";
 import { RadioValues } from "./RadioValues";
 import { ValueType } from "./ValueType";
-import { VisibleElementDefinition } from "./VisibleElementDefinition";
 
 /**
  * Radio element definition.
@@ -13,7 +13,7 @@ import { VisibleElementDefinition } from "./VisibleElementDefinition";
  * @extends {BaseElementDefinition}
  * @implements {IRadioElementDefinition}
  */
-export class RadioElementDefinition<T extends RadioValues<string>> extends VisibleElementDefinition implements IRadioElementDefinition<T> {
+export class RadioElementDefinition<T extends RadioValues<string>> extends BaseElementDefinition implements IRadioElementDefinition<T> {
     private readonly values: T;
 
     /**
