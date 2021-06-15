@@ -1,3 +1,12 @@
+## [1.4.6](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.5...v1.4.6) (2021-06-15)
+
+
+### Features
+
+* add quick support for `showFile` ([07cf032](https://github.com/dkanehl/syn-workflow-base/commit/07cf032bb0cbb92d88484db5de0fa0ce7802a31a))
+
+
+
 ## [1.4.5](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.4...v1.4.5) (2021-06-15)
 
 
