@@ -46,7 +46,21 @@ interface uploadFormObj {
      * @param {string} instanceId Don't know. Use '0' as value.
      * @memberof uploadFormObj
      */
-    showFile(workflowId: string, mode: string, instanceId: string);
+    showFile(workflowId: string, mode: string, instanceId: string): void;
+
+    /**
+     * Shows the upload dialog.
+     *
+     * @memberof uploadFormObj
+     */
+    show(): void;
+
+    /**
+     * Shows the upload dialog.
+     *
+     * @memberof uploadFormObj
+     */
+    open(): void;
 }
 
 declare const $JR_UPLOAD_MANAGERS: {
