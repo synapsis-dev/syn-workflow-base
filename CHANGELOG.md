@@ -1,3 +1,12 @@
+## [1.4.7](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.6...v1.4.7) (2021-06-15)
+
+
+### Features
+
+* add type support for `open` and `show` for `uploadFormObj` type ([784baa5](https://github.com/dkanehl/syn-workflow-base/commit/784baa566a442c7dbb9954702ee9577b4ada0174))
+
+
+
 ## [1.4.6](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.5...v1.4.6) (2021-06-15)
 
 
