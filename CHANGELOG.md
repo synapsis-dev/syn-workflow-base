@@ -1,3 +1,12 @@
+## [1.4.5](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.4...v1.4.5) (2021-06-15)
+
+
+### Features
+
+* add basic support for `$JR_UPLOAD_MANAGERS.get('id').buildUrl()` ([8cd8f77](https://github.com/dkanehl/syn-workflow-base/commit/8cd8f77e9dc7ca1d4553b4be3b54529e6ccac715))
+
+
+
 ## [1.4.4](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.3...v1.4.4) (2021-03-07)
 
 
