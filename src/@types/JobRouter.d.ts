@@ -38,6 +38,15 @@ interface uploadFormObj {
      * @memberof uploadFormObj
      */
     buildUrl(workflowId: string, mode: string, overwrittenViewerType: unknown, instanceId: string): string;
+    /**
+     * Open the attachment in a new window.
+     *
+     * @param {string} workflowId The current workflow id.
+     * @param {string} mode Don't know, probably the viewer
+     * @param {string} instanceId Don't know. Use '0' as value.
+     * @memberof uploadFormObj
+     */
+    showFile(workflowId: string, mode: string, instanceId: string);
 }
 
 declare const $JR_UPLOAD_MANAGERS: {
