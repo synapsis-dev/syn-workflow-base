@@ -26,7 +26,6 @@ declare const $JRApp: {
 };
 
 interface uploadFormObj {
-
     /**
      * Generates a url to the uploaded file.
      *
@@ -47,6 +46,23 @@ interface uploadFormObj {
      * @memberof uploadFormObj
      */
     showFile(workflowId: string, mode: string, instanceId: string);
+    uploadFormObj: DialogElement;
+}
+
+interface DialogElement {
+    addCloseCallback(callback: () => void): void;
+    center(): void;
+    close(): void;
+    destroy(): void;
+    dialog(): void;
+    hide(): void;
+    open(): void;
+    setBackground(background: string): void;
+    setContent(html: string): void;
+    setOptions(options): void;
+    setTitle(title: string): void;
+    setWidth(width: number): void;
+    show(): void;
 }
 
 declare const $JR_UPLOAD_MANAGERS: {
@@ -754,37 +770,37 @@ declare type JR_STEP_ACTION = "send" | "save" | "assign" | "request" | "back" | 
 declare type JR_EXECUTE_MODE = "send" | "finish" | "save" | "abort" | "request" | "assign" | "resubmission" | "answer" | "back" | "reserve";
 
 declare interface JRSubtableActionObject {
-    addRowActionCanceled:         boolean;
-    additionalParams:             object;
-    afterAddRowCallbacks:         unknown[];
-    afterAddRowEventCanceled:     boolean;
-    afterRemoveRowCallbacks:      unknown[];
-    afterRemoveRowEventCanceled:  boolean;
-    ajaxRequestInProgress:        boolean;
-    ajaxRequestQueue:             unknown[];
-    beforeAddRowCallbacks:        unknown[];
-    beforeAddRowEventCanceled:    boolean;
-    beforeRemoveRowCallbacks:     unknown[];
+    addRowActionCanceled: boolean;
+    additionalParams: object;
+    afterAddRowCallbacks: unknown[];
+    afterAddRowEventCanceled: boolean;
+    afterRemoveRowCallbacks: unknown[];
+    afterRemoveRowEventCanceled: boolean;
+    ajaxRequestInProgress: boolean;
+    ajaxRequestQueue: unknown[];
+    beforeAddRowCallbacks: unknown[];
+    beforeAddRowEventCanceled: boolean;
+    beforeRemoveRowCallbacks: unknown[];
     beforeRemoveRowEventCanceled: boolean;
-    directOpen:                   boolean;
-    elementObservers:             object;
-    hiddenColumns:                object;
-    ignoreMaxRows:                boolean;
-    ignoreMinRows:                boolean;
-    maxRows:                      null;
-    minRows:                      null;
-    process:                      string;
-    processId:                    string;
-    processName:                  string;
-    publicStart:                  boolean;
-    removeRowActionCanceled:      boolean;
-    step:                         string;
-    subtable:                     string;
-    subtableElementName:          string;
-    subtableName:                 string;
-    version:                      string;
-    visibleColumns:               object;
-    workflowId:                   string;
+    directOpen: boolean;
+    elementObservers: object;
+    hiddenColumns: object;
+    ignoreMaxRows: boolean;
+    ignoreMinRows: boolean;
+    maxRows: null;
+    minRows: null;
+    process: string;
+    processId: string;
+    processName: string;
+    publicStart: boolean;
+    removeRowActionCanceled: boolean;
+    step: string;
+    subtable: string;
+    subtableElementName: string;
+    subtableName: string;
+    version: string;
+    visibleColumns: object;
+    workflowId: string;
 }
 
 /**
