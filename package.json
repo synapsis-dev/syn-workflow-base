@@ -1,6 +1,6 @@
 {
   "name": "workflow-base",
-  "version": "1.4.7",
+  "version": "1.4.6",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
