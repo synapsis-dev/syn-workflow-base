@@ -1,3 +1,18 @@
+## [1.4.7](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.6...v1.4.7) (2021-06-15)
+
+
+### Features
+
+* add type support for `open` and `show` for `uploadFormObj` type ([784baa5](https://github.com/dkanehl/syn-workflow-base/commit/784baa566a442c7dbb9954702ee9577b4ada0174))
+* add typing support for the `uploadFormObj` ([f8360cb](https://github.com/dkanehl/syn-workflow-base/commit/f8360cbec5c619ef702100bf9c67cf2b0ba34bc4))
+
+
+### Reverts
+
+* Revert "Merge branch 'hotfix/v1.4.6'" ([6c04f27](https://github.com/dkanehl/syn-workflow-base/commit/6c04f278fd0ffa56d9d40d6e1258f6f54cb123d7))
+
+
+
 ## [1.4.6](https://github.com/dkanehl/syn-workflow-base/compare/v1.4.5...v1.4.6) (2021-06-15)
 
 
