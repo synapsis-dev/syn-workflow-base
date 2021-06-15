@@ -25,6 +25,25 @@ declare const $JRApp: {
     registry: IJRRegistry;
 };
 
+interface uploadFormObj {
+
+    /**
+     * Generates a url to the uploaded file.
+     *
+     * @param {string} workflowId The current workflow id.
+     * @param {string} mode Don't know. Use '2' as mode.
+     * @param {unknown} overwrittenViewerType Don't know. Use 'undefined' as value.
+     * @param {string} instanceId Don't know. Use '0' as value.
+     * @returns {string}
+     * @memberof uploadFormObj
+     */
+    buildUrl(workflowId: string, mode: string, overwrittenViewerType: unknown, instanceId: string): string;
+}
+
+declare const $JR_UPLOAD_MANAGERS: {
+    get: (id: string) => uploadFormObj;
+};
+
 declare interface IJRRegistry {
     getComponent(id: string): IJRRegistryComponent;
 }
