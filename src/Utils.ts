@@ -1,6 +1,18 @@
 export * from './CaseIt';
 
 /**
+ * Returns a supplied numeric expression rounded to the nearest floating point.
+ *
+ * @export
+ * @param {number} number The value to be rounded to the nearest floating point.
+ * @param {number} decimalPlaces Amount of decimal places there result will have.
+ * @returns {number}
+ */
+export function RoundAccurately(number: number, decimalPlaces: number): number {
+    return Number(Math.round(Number(number.toFixed(decimalPlaces + 1) + `e${decimalPlaces}`)) + `e-${decimalPlaces}`);
+}
+
+/**
  * Indicates if dialog is in edit mode.
  *
  * @export

@@ -1,20 +1,11 @@
 {
     "compilerOptions": {
+        "module": "ESNext",
         "target": "es6",
-        "moduleResolution": "node",
-        "sourceMap": true,
         "declaration": true,
         "outDir": "dist",
-        "lib": [
-            "es2015",
-            "es2016",
-            "es2017",
-            "es2018",
-            "es2019",
-            "es2020",
-            "dom",
-            "scripthost"
-        ],
-        "downlevelIteration": true
-    }
+    },
+    "include": [
+        "src/**/*"
+    ]
 }

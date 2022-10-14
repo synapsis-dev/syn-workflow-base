@@ -108,6 +108,7 @@ function GenerateDialogDefinition(dialog: string, elements: IDesignerResults<IDe
                     break;
                 case ElementType.Description:
                 case ElementType.Text:
+                case ElementType.Image:
                     interfaceDefinition += `IValueElementDefinition<ElementType.${type}>;`;
                     objectDefinition += `new SimpleValueElementDefinition<ElementType.${type}>("${name}", ElementType.${type}),`;
 
